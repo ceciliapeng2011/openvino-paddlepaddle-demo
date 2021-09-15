@@ -7,6 +7,7 @@ import os
 import sys
 import numpy as np
 import time
+import re
 
 __dir__ = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(__dir__)
@@ -20,8 +21,8 @@ class TextDetector(object):
         self.args = args
         self.det_algorithm = args.det_algorithm
 
-        pdmodel_file = f'{__dir__}/../../paddle2ov/assets/pdmodels/ocr_openvino_support/ch_ppocr_mobile_v2.0_det_infer/inference.pdmodel' # default
-        model_dir = args.rec_model_dir
+        pdmodel_file = f'{__dir__}/../../../openvino-tools/paddle2ov/assets/pdmodels/ocr_openvino_support/ch_ppocr_mobile_v2.0_det_infer/inference.pdmodel' # default
+        model_dir = args.det_model_dir
         if model_dir and os.path.isfile(model_dir) and re.match(os.path.splitext(model_dir)[-1],'.pdmodel$'):
             pdmodel_file = model_dir
         print('info: det pdmode is {}'.format(pdmodel_file))        

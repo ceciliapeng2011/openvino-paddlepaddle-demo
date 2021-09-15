@@ -8,6 +8,7 @@ import sys
 import numpy as np
 import time
 import math
+import re
 
 __dir__ = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(__dir__)
@@ -26,7 +27,7 @@ class TextRecognizer(object):
         self.rec_algorithm = args.rec_algorithm
 
         # model_path
-        pdmodel_file = f'{__dir__}/../../paddle2ov/assets/pdmodels/ocr_openvino_support/ch_ppocr_mobile_v2.0_rec_infer/inference.pdmodel' # default
+        pdmodel_file = f'{__dir__}/../../../openvino-tools/paddle2ov/assets/pdmodels/ocr_openvino_support/ch_ppocr_mobile_v2.0_rec_infer/inference.pdmodel' # default
         model_dir = args.rec_model_dir
         if model_dir and os.path.isfile(model_dir) and re.match(os.path.splitext(model_dir)[-1],'.pdmodel$'):
             pdmodel_file = model_dir
